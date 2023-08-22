@@ -5,5 +5,7 @@ sys.stdout = open("elecout.txt", "w")
 number = input()
 votes = input()
 
-a, b, c = 0
+a = 0
+b = 0
+c = 0
 print(a)

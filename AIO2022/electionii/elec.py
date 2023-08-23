@@ -30,20 +30,30 @@ votes = input_file.readline().strip()
 
 # TODO: This is where you should compute your solution. Store the winning
 # candidate ('A', 'B' or 'C'), or 'T' if there is a tie, into the variable
-# answer.
-answer = "Hi"
-list = []
+# answer.pyt
+lst = []
 for i in votes:
-    list.append(i)
-print(list)
+    lst.append(str(i))
+print(lst)
 
 a, b, c = 0, 0, 0
-for "A" in list:
-    a += 1
-for "B" in list:
-    b += 1
-for "C" in list:
-    c += 1
+for i in lst:
+    if(i=="A"):
+        a += 1
+    elif(i=="B"):
+        b += 1
+    elif(i=="C"):
+        c += 1
+
+if a > b and a > c:
+    answer = "A"
+elif b > a and b > c:
+    answer = "B"
+elif c > a and c > b:
+    answer = "C"
+elif a == b or a == c or b == c:
+    answer = "T"
+
 print(a)
 print(b)
 print(c)

@@ -1,0 +1,429 @@
+
+How to print list without formatting
+my_list = [1, 2, 3, 'a', 'b', 'c']
+print(" ".join(map(str, my_list)))
+
+
+
+infile = open("robotin.txt", "r")
+outfile = open("robotout.txt", "w")
+ 
+# We don't actually need K here, only the second line instrs
+K = infile.readline()
+instrs = infile.readline()
+ 
+# v: Number of spaces north of start (negative value for south)
+v = 0
+# h: Number of spaces east of start (negative value for west)
+h = 0
+ 
+for instr in instrs:
+    if instr == 'N':
+        v += 1
+    if instr == 'S':
+        v -= 1 
+    if instr == 'E':
+        h += 1
+    if instr == 'W':
+        h -= 1
+ 
+ans = abs(v)+abs(h)
+ 
+outfile.write(str(ans) + "\n")
+
+
+
+
+#!/usr/bin/env python
+
+import sys
+
+sys.setrecursionlimit(1000000000)
+
+ 
+
+# N is the number of holes.
+
+N = None
+
+ 
+
+# x and y contain the locations of the holes.
+
+x = [None for x in range(100005)]
+
+y = [None for x in range(100005)]
+
+ 
+
+answer = None
+
+ 
+
+# Open the input and output files.
+
+input_file = open("artin.txt", "r")
+
+output_file = open("artout.txt", "w")
+
+ 
+
+# Read the value of N.
+
+N = int(input_file.readline().strip())
+
+ 
+
+# Read the location of each hole.
+
+for i in range(0, N):
+
+    input_line = input_file.readline().strip()
+
+    x[i], y[i] = map(int, input_line.split())
+
+ 
+
+# Resize the arrays to only include the N points
+
+x = x[:N]
+
+y = y[:N]
+
+ 
+
+# Find the area
+
+width = max(x) - min(x)
+
+height = max(y) - min(y)
+
+answer = width*height
+
+ 
+
+# Write the answer to the output file.
+
+output_file.write("%d\n" % (answer))
+
+ 
+
+# Finally, close the input/output files.
+
+input_file.close()
+
+output_file.close()
+
+
+import sys
+
+ 
+
+S = [None for x in range(100005)]
+
+ 
+
+input_file = open("melodyin.txt", "r")
+
+output_file = open("melodyout.txt", "w")
+
+ 
+
+input_line = input_file.readline().strip()
+
+N, K = map(int, input_line.split())
+
+ 
+
+for i in range(0, N):
+
+    S[i] = int(input_file.readline().strip())
+
+ 
+
+sections = [[], [], []]
+
+ 
+
+for i in range(0, N):
+
+    sections[i%3].append(S[i])
+
+ 
+
+def calculate_mode(a):
+
+    count = [0 for x in range(K+1)]
+
+    for note in a:
+
+        count[note] += 1
+
+    return max(count)
+
+ 
+
+kept_the_same = 0
+
+kept_the_same += calculate_mode(sections[0])
+
+kept_the_same += calculate_mode(sections[1])
+
+kept_the_same += calculate_mode(sections[2])
+
+ 
+
+answer = N - kept_the_same
+
+ 
+
+output_file.write("%d\n" % (answer))
+
+ 
+
+input_file.close()
+
+output_file.close()
+
+
+
+import sys
+
+ 
+
+S = [None for x in range(100005)]
+
+ 
+
+input_file = open("melodyin.txt", "r")
+
+output_file = open("melodyout.txt", "w")
+
+ 
+
+input_line = input_file.readline().strip()
+
+N, K = map(int, input_line.split())
+
+ 
+
+for i in range(0, N):
+
+    S[i] = int(input_file.readline().strip())
+
+ 
+
+sections = [[], [], []]
+
+ 
+
+for i in range(0, N):
+
+    sections[i%3].append(S[i])
+
+ 
+
+def calculate_mode(a):
+
+    count = [0 for x in range(K+1)]
+
+    for note in a:
+
+        count[note] += 1
+
+    return max(count)
+
+ 
+
+kept_the_same = 0
+
+kept_the_same += calculate_mode(sections[0])
+
+kept_the_same += calculate_mode(sections[1])
+
+kept_the_same += calculate_mode(sections[2])
+
+ 
+
+answer = N - kept_the_same
+
+ 
+
+output_file.write("%d\n" % (answer))
+
+ 
+
+input_file.close()
+
+output_file.close()
+
+
+infile = open("distin.txt", "r")
+
+outfile = open("distout.txt", "w")
+
+ 
+
+Ns, Ks = infile.readline().split(" ")
+
+N, K = int(Ns), int(Ks)
+
+d = [int(infile.readline()) for _ in range(N)]
+
+ 
+
+d.sort()
+
+ 
+
+last = -1000000000
+
+ans = 0
+
+ 
+
+for x in d:
+
+    if x - last >= K:
+
+        last = x
+
+        ans += 1
+
+ 
+
+outfile.write(str(ans) + "\n")
+
+
+
+infile = open("spacein.txt", "r")
+
+outfile = open("spaceout.txt", "w")
+
+ 
+
+Ns, Fs = infile.readline().split(" ")
+
+N, F = int(Ns), int(Fs)
+
+C = [int(infile.readline()) for i in range(N)]
+
+ 
+
+starts = []
+
+ends = []
+
+ 
+
+# Find valid starting points
+
+for i, val in enumerate(C):
+
+    if not starts or val < starts[-1][0]:
+
+        starts.append((val, i))
+
+ 
+
+# Find valid ending points
+
+for i, val in reversed(list(enumerate(C))):
+
+    if not ends or val < ends[-1][0]:
+
+        ends.append((val, i))
+
+ 
+
+# Reverse ends to get original order
+
+ends = ends[::-1]
+
+ 
+
+# Store answer
+
+ans = -1
+
+# Store the previous "best starting point"
+
+prev_start = 0
+
+ 
+
+for val, i in ends:
+
+    # Update the position of the "best starting point"
+
+    while prev_start < len(starts) and val + starts[prev_start][0] > F:
+
+        prev_start = prev_start + 1
+
+ 
+
+    # If the output is a valid mission, record its length in the answer
+
+    if prev_start < len(starts) and val + starts[prev_start][0] <= F:
+
+        ans = max(ans, i - starts[prev_start][1] + 1)
+
+ 
+
+# We cannot launch and exit on the same day
+
+if ans == 1:
+
+    ans = -1
+
+ 
+
+outfile.write(str(ans) + "\n")
+
+
+
+infile = open("laserin.txt", "r")
+
+outfile = open("laserout.txt", "w")
+
+ 
+
+# Read in our N, A and B
+
+N = int(infile.readline())
+
+A = infile.readline()
+
+B = infile.readline()
+
+ 
+
+# Store our current length
+
+cur_length = 0
+
+ 
+
+ans = 0
+
+ 
+
+for i in range(2*N):
+
+    if A[i] == 'D' and B[i] == 'R':
+
+        cur_length = cur_length + 1
+
+ 
+
+    if A[i] == 'R' and B[i] == 'D':
+
+        cur_length = cur_length - 1
+
+ 
+
+    ans = max(ans, cur_length)
+
+ 
+
+outfile.write(str(ans) + "\n")x

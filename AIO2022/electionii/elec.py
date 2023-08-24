@@ -53,7 +53,7 @@ elif c > a and c > b:
     answer = "C"
 elif a == b or a == c or b == c:
     answer = "T"
-
+c
 print(a)
 print(b)
 print(c)

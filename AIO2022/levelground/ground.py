@@ -34,6 +34,11 @@ A = list(map(int, input_line.split()))
 # TODO: This is where you should compute your solution. Store the highest
 # intensity that can be achieved into the variable answer.
 
+for i in A:
+    if A[i] == A[i+1]:
+        
+
+
 # Write the answer to the output file.
 output_file.write("%d\n" % (answer))
 

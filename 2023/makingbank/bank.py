@@ -38,12 +38,12 @@ print(good)
 s = 1
 answer = 0
 
-
+print(days)
 for i in days:
-    if i == "C" and (days.index(i) + 1 in range(1, 5)):
+    if i == "C" and (days.index(i) + 1 in range(1, good)):
         s += 1
         print("s " + str(s))
-    elif i == "C" and (days.index(i) + 1 not in range(1, 5)):
+    elif i == "C" and (days.index(i) + 1 not in range(1, good)):
         answer += s
         print("answer1 " + str(answer))
     elif i == "M":

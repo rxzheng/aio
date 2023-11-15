@@ -1,5 +1,5 @@
 #include <iostream>
-int main{
+int main() {
     int x;
     int y;
     std::cin >> x;
@@ -17,4 +17,5 @@ int main{
         a = dimensions;
         b = npcs - dimensions;
     }
+    std::cout << a << " " << b;
 }

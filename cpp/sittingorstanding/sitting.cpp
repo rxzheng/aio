@@ -1,14 +1,19 @@
 #include <iostream>
+#include <fstream>
+using namespace std;
 int main() {
+    //input and output files
+  ifstream inputFile("sitin.txt");
+  ofstream outputFile("sitout.txt");
     int x;
     int y;
-    std::cin >> x;
-    std::cin >> y;
+    inputFile >> x;
+   inputFile >> y;
     int dimensions = x * y;
     int npcs;
     int a;
     int b;
-    std::cin >> npcs;
+    inputFile >> npcs;
     if (npcs <= dimensions){
         a = npcs;
         b = 0;
@@ -17,5 +22,5 @@ int main() {
         a = dimensions;
         b = npcs - dimensions;
     }
-    std::cout << a << " " << b;
+   outputFile << a << " " << b;
 }
